@@ -11,11 +11,13 @@ exports.handler = async function(event) {
 
   // perform a query against firestore for all nfts, wait for it to return, store in memory
 
-  let nftQuery = await db.collection(`nftCollection`).orderBy(`timestampNftCreated`, `desc`).get()
+  let nftQuery = await db.collection(`nftCollection`).where(`forSale`,`==`,true).get()
 
   // retrieve the documents from the query
   let nfts = nftQuery.docs
 
+  nfts.sort()
+  
   // loop through the nft documents
   for (let nftIndex=0; nftIndex < 1; nftIndex++) {
     // get the id from the document
