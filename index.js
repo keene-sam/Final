@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       document.location.href = `index.html`
     })
 
-    // Build the URL for our posts API
+    // Build the URL for our nft API
     let url = `/.netlify/functions/Home`
 
     // Fetch the url, wait for a response, store the response in memory
@@ -35,18 +35,18 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Write the json-formatted data to the console in Chrome
     console.log(json)
 
-    // Grab a reference to the element with class name "posts" in memory
+    // Grab a reference to the element 
     let nftDiv = document.querySelector(`.Home`)
 
-    // Loop through the JSON data, for each Object representing a post:
+    // Loop through the JSON data, for each Object representing a nft:
     for (let i=0; i < json.length; i++) {
-      // Store each object ("post") in memory
+      // Store each object ("nft") in memory
       let nft = json[i]
 
-      // Store the post's ID in memory
+      // Store the nft's ID in memory
       let nftId = nft.id
 
-      // Create some markup using the post data, insert into the "posts" element
+      // Create some markup using the nft data, insert into the "nft" element
       nftDiv.insertAdjacentHTML(`beforeend`, `
         <div class="md:flex">
         <div class="my-8">
