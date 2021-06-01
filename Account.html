@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Items!</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class=" md:font-extrabold font-bold text-green-600 md:text-4xl text-2xl text-left m-16"> My Account </div>
+    <div class="sign-in-or-sign-out"></div>
+
+        <!-- <div class=" px-8 md:flex md:items-center bg-blue-100">
+            <div class="md:font-bold text-blue-400 md:text-2xl"> Starbucks Capsules</div>
+            <div class="md:w-1/3  md:p-8 p-4"> <img src="starbucks_2.jpg"> </div>
+            <div>
+                <p> We offer known starbucks capsules for only 50% premium over amazon </p>
+                <p> Pay more and support our local startup business!</p>
+                <p class="text-green-600 md:font-bold"> Price: $49.99</p>  
+            </div>
+        </div> -->
+    <div> 
+        <p> 
+            <!-- Reference to our home page -->
+            <button href="index.html" class="w-48 block mt-4 text-white bg-green-500 rounded text-2xl my-2"> Home</button>
+      
+            <!-- Reference to the marketplace page -->
+            <button href="Marketplace.html" class="w-48 block mt-4 text-white bg-green-500 rounded text-2xl my-2"> Marketplace</button>
+        </p>
+    </div>
+
+    <div class="account" ></div>
+
+      <!-- Put the Firebase config here -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+  apiKey: "AIzaSyDpTEYLGJ5ENqmLRswui9heynZepmWlAeM",
+  authDomain: "finalkieiproject.firebaseapp.com",
+  projectId: "finalkieiproject",
+  storageBucket: "finalkieiproject.appspot.com",
+  messagingSenderId: "571182565488",
+  appId: "1:571182565488:web:a2808fb1bc8b4c9bc20cb5"
+}
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+    <script src="Account.js"></script>
+
+</body>
+</html>
