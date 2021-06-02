@@ -84,3 +84,18 @@ firebase.auth().onAuthStateChanged(async function(user) {
     ui.start(`.sign-in-or-sign-out`, authUIConfig)
   }
 })
+
+
+
+
+      // // Create an empty string for the comments
+      // let comments = ``
+
+      // // Loop through the post's comments
+      // for (let i=0; i < post.comments.length; i++) {
+      //   // Create a variable for each comment
+      //   let comment = post.comments[i]
+
+      //   // Add HTML markup for the comment to the comment string
+      //   comments = comments + `<div><strong>${comment.userName}</strong> ${comment.body}</div>`
+      // }
