@@ -32,8 +32,14 @@ exports.handler = async function(event) {
     // create an Object to be added to the return value of our lambda
     let releaseObject = {
       id: nftId,
-      imageUrl: nftData.urlNftFile,
+      name: nftData.name,
+      ownerId: nftData.ownerId,
+      category: nftData.category,
       description: nftData.description,
+      forSale: nftData.forSale,
+      urlNft: nftData.urlNft,
+      price: nftData.price,
+      timestampNftCreated: nftData.timestampNftCreated
     }
 
     // add the Object to the return value

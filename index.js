@@ -48,15 +48,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
       // Create some markup using the nft data, insert into the "nft" element
       nftDiv.insertAdjacentHTML(`beforeend`, `
-        <div class="md:flex">
-        <div class="my-8">
-          <img src="${nft.imageUrl}">
-          <span class="text-xl">${nft.description}</span>
-        </div>
-    
+      <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
+      <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
+
+        <div class="md:flex md:mx-4 mx-2 my-2">
+          <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+         <div>
+            <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
+            <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
+            <p class="ml-4 font-bold text-base">Price: $${nft.price}</p>
 
         </div>
-      `)
+        </div>  
+
+      </div>
+    `)
     }
 
   } else {
