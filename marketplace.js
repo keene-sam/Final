@@ -52,20 +52,39 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
 
           <div class="md:flex md:mx-4 mx-2 my-2">
-            <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
-           <div>
-              <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
-              <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
-              <p class="ml-4 font-bold text-base">Price: $${nft.price}</p>
+              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+              <div>
+                <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
+                <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
+                <p class="ml-4 font-bold text-base">Price: $${nft.price}</p>
+                <button id="buy-button-${nftId}" class="py-2 px-4 rounded-md ml-4 my-4 shadow-sm font-medium text-white bg-blue-700 focus:outline-none">Buy NFT</button>
+              </div>
 
-          </div>
+
           </div>  
 
         </div>
       `)
-      }
+      
   
-    } else {
+      // get a reference to the newly created buy NFT button
+      let buyNftButton = document.querySelector(`#buy-button-${nftId}`)
+
+      // event listener for the buy button
+      buyNftButton.addEventListener(`click`, async function(event) {
+        // ignore the default behavior
+        event.preventDefault()
+
+        // Build the URL for our buy API
+        let url = `/.netlify/functions/buyNft?nftId=${nftId}&userId=${user.uid}`
+
+        // refresh the page
+        location.reload()
+      })
+    }
+
+    } 
+    else {
       // user is not logged-in, so show login
       // Initializes FirebaseUI Auth
       let ui = new firebaseui.auth.AuthUI(firebase.auth())
