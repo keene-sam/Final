@@ -11,7 +11,7 @@ exports.handler = async function(event) {
 
   // perform a query against firestore for all nfts, wait for it to return, store in memory
 
-  let nftQuery = await db.collection(`nftCollection`).where(`forSale`,`==`,true).get()
+  let nftQuery = await db.collection(`nftCollection`).get()
 
   // retrieve the documents from the query
   let nfts = nftQuery.docs
@@ -25,6 +25,7 @@ exports.handler = async function(event) {
 
     // get the data from the document
     let nftData = nfts[nftIndex].data()
+    
 
     // create an Object to be added to the return value of our lambda
     let nftObject = {

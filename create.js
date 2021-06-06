@@ -43,14 +43,14 @@ console.log(`is it working`)
       let nftCategoryInput = document.querySelector(`#nft-category`)
 console.log(nftCategoryInput)
 
-      // store the user-inputted image URL in memory
+      // store the user-inputted data in memory
       let nftUrl = nftUrlInput.value
       let nftName = nftNameInput.value
       let nftDescription = nftDescriptionInput.value
       let nftCategory = nftCategoryInput.value
 
 
-      // create the URL for our "create post" lambda function
+      // create the URL for our  lambda function
       let url = `/.netlify/functions/create_nft?userId=${userId}&nftUrl=${nftUrl}&nftName=${nftName}&nftDescription=${nftDescription}&nftCategory=${nftCategory}`
 
       // fetch the URL, wait for the response, store the response in memory
