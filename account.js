@@ -74,32 +74,32 @@ firebase.auth().onAuthStateChanged(async function(user) {
         nftsDiv.insertAdjacentHTML(`beforeend`, `
           <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
             <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
-            <div class="md:flex md:mx-4 mx-2 my-2">
-              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+            <div class="md:flex ml-4 md:mx-4 mx-2 my-2">
+              <img src="${nft.urlNft}" class="w-64 md:w-1/2 border-2 border-blue-400 rounded">
             <div>
-                <p class="nft ml-4 font-bold text-yellow-500 pb-4 text-base">CURRENTLY ON THE MARKET FOR SALE</p>
+                <p class="nft md:ml-8 font-bold text-green-500 pb-4 text-base">CURRENTLY ON THE MARKET FOR SALE</p>
                 <div class="flex flex-row">
-                  <div class="ml-4 font-bold text-base">Item Description: </div>
-                  <div class="ml-2 pb-2 text-base"> ${nft.description} </div>
+                  <div class="md:ml-8 font-bold text-base">Item Description: </div>
+                  <div class="ml-2 pb-2 text-base capitalize"> ${nft.description} </div>
                 </div> 
                 <div class="flex flex-row">
-                  <div class="ml-4 font-bold text-base">Category: </div>
-                  <div class="ml-2 pb-2 text-base"> ${nft.category} </div>
+                  <div class="md:ml-8 font-bold text-base">Category: </div>
+                  <div class="ml-2 pb-2 text-base capitalize"> ${nft.category} </div>
                 </div> 
                 <div class="flex flex-row">
-                  <div class="ml-4 font-bold text-base">NFT Id: </div>
+                  <div class="md:ml-8 font-bold text-base">NFT Id: </div>
                   <div class="ml-2 pb-2 text-base"> ${nft.id} </div>
                 </div> 
                 <div class="flex flex-row">
-                  <div class="ml-4 font-bold text-base">Current Listing Price: </div>
+                  <div class="md:ml-8 font-bold text-base">Current Listing Price: </div>
                   <div class="ml-2 pb-2 text-base"> $${nft.price} </div>
                 </div> 
                 <form class="w-full mt-8">
-                  <div class="flex flex-col mb-4">
-                    <label class="ml-4 font-bold text-lg text-grey-darkest" for="sale">Please enter a new price </label>     
-                    <input type="text" id="sale-price-${nftId}" class="mr-2 ml-4 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Change Listing Price">
+                  <div class="md:ml-8 flex flex-col mb-4">
+                    <label class="font-bold text-lg text-grey-darkest" for="sale">Please enter a new price </label>     
+                    <input type="text" id="sale-price-${nftId}" class="mr-2 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Change Listing Price">
                   </div>
-                    <button id="sell-button-${nftId}" class="bg-green-500 py-2 px-4 rounded-md ml-4 my-4 hover:bg-green-600 text-white">Confirm and Change Price</button>
+                    <button id="sell-button-${nftId}" class="md:ml-8 bg-green-500 py-2 px-4 rounded-md my-4 hover:bg-green-600 text-white">Confirm and Change Price</button>
                 </form>
               </div>
             </div>  
@@ -112,29 +112,29 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
         nftsDiv.insertAdjacentHTML(`beforeend`, `
           <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
-            <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
-            <div class="md:flex md:mx-4 mx-2 my-2">
-              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
-            <div>
-                <p class="nft ml-4 font-bold text-green-500 pb-4 mx-8 text-base">CURRENTLY NOT FOR SALE</p>    
+          <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
+          <div class="md:flex ml-4 md:mx-4 mx-2 my-2">
+            <img src="${nft.urlNft}" class="w-64 md:w-1/2 border-2 border-blue-400 rounded">
+          <div>
+                  <p class="md:ml-8 nft font-bold text-yellow-500 pb-4 text-base">CURRENTLY NOT FOR SALE</p>    
                 <div class="flex flex-row">
-                <div class="ml-4 font-bold text-base">Item Description: </div>
-                <div class="ml-2 pb-2 text-base"> ${nft.description} </div>
-              </div> 
-              <div class="flex flex-row">
-                <div class="ml-4 font-bold text-base">Category: </div>
-                <div class="ml-2 pb-2 text-base"> ${nft.category} </div>
-              </div> 
-              <div class="flex flex-row">
-                <div class="ml-4 font-bold text-base">NFT Id: </div>
-                <div class="ml-2 pb-2 text-base"> ${nft.id} </div>
-              </div> 
+                  <div class="md:ml-8 font-bold text-base">Item Description: </div>
+                  <div class="ml-2 pb-2 text-base capitalize"> ${nft.description} </div>
+                </div> 
+                <div class="flex flex-row">
+                  <div class="md:ml-8 font-bold text-base">Category: </div>
+                  <div class="ml-2 pb-2 text-base capitalize"> ${nft.category} </div>
+                </div> 
+                <div class="flex flex-row">
+                  <div class="md:ml-8 font-bold text-base">NFT Id: </div>
+                  <div class="ml-2 pb-2 text-base"> ${nft.id} </div>
+                </div> 
                   <form class="w-full mt-8">
                     <div class="flex flex-col mb-4">
-                      <label class="ml-4 font-bold text-lg text-grey-darkest" for="sale">Please enter a price to list NFT</label>     
-                      <input type="text" id="sale-price-${nftId}" class="mr-2 ml-4 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Enter Listing Price">
+                      <label class="md:ml-8 font-bold text-lg text-grey-darkest" for="sale">Please enter a price to list NFT</label>     
+                      <input type="text" id="sale-price-${nftId}" class="md:ml-8 mr-2 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Enter Listing Price">
                     </div>
-                    <button id="sell-button-${nftId}" class="bg-green-500 py-2 px-4 rounded-md ml-4 my-4 hover:bg-green-600 text-white">Confirm and List for Sale</button>
+                    <button id="sell-button-${nftId}" class="md:ml-8 bg-green-500 py-2 px-4 rounded-md my-4 hover:bg-green-600 text-white">Confirm and List for Sale</button>
                   </form>
               </div>
             </div>  
