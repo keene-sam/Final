@@ -9,30 +9,34 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
-<div> 
-  <p> 
-      <!-- Reference to our home page -->
-      <a href="index.html" class="w-48 block mt-4 text-white bg-green-500 rounded text-2xl my-2"> Home</a>
-
-      <!-- Reference to the marketplace page -->
-      <a href="account.html" class="w-48 block mt-4 text-white bg-green-500 rounded text-2xl my-2"> My Account</a>
-
-      <!-- Reference to creating a new post page -->
-      <a href="create.html" class="w-52 block mt-4 text-black bg-yellow-500 rounded text-2xl my-2"> Create A New NFT</a>
-              
-  </p>    
-</div>
-
-
+<div class="flex flex-row">
+  <div class="text-left p-4 user-name"></div>
+  <div class="ml-auto text-sm text-right p-4 sign-in-or-sign-out"></div>
+</div> 
 
 <div>
-<body class="bg-blue-50">
-  <div class="flex items-center">
-    <div class="md:mx-0 mx-4"><span class="font-bold text-4xl">Marketplace</span></div>
-    <div class="ml-auto text-sm sign-in-or-sign-out"></div>
-  </div>
+  <body class="bg-blue-50">
+  
+    <div class=" md:font-extrabold font-bold ml-4 my-4 text-green-600 md:text-4xl text-2xl text-center m-16"> Marketplace </div>
 
-  <h3 class="font-bold text-left text-2xl pt-10">
+
+      
+    <div class = "md: flex flex-wrap items-center justify-center border-b-4 border-t-4 py-2 px-4">
+        
+      <!-- Reference to our home page -->
+      <a href="index.html" class="w-64 block p-2 ml-4 my-4 text-center items-center mt-4 text-white bg-green-500 rounded text-2xl"> Home</a>
+
+      <!-- Reference to the marketplace page -->
+      <a href="account.html" class="w-64 block p-2 ml-4 my-4 items-center text-center mt-4 text-white bg-green-500 rounded text-2xl"> My Account</a>
+
+      <!-- Reference to creating a new post page -->
+      <a href="create.html" class="w-64 block p-2 ml-4 my-4 items-center text-center mt-4 text-black bg-yellow-500 rounded text-2xl"> Create A New NFT</a>
+              
+
+    </div>
+
+
+  <h3 class="font-bold text-center text-2xl pt-10">
     Current releases on the marketplace
   </h3>
   

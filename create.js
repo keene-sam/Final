@@ -6,6 +6,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // write the user Object to the JavaScript console
     console.log(user)
 
+    // Build the markup for the username and set the HTML in the header
+    document.querySelector(`.user-name`).innerHTML = `
+    <button class="text-black font-bold">👾 ${user.displayName}</button>
+    `
+    // get a reference to the account button
+    let accountButton = document.querySelector(`.user-name`)
+
+    // handle the sign out button click
+    accountButton.addEventListener(`click`, function(event) {
+      
+      // redirect to the home page
+      document.location.href = `account.html`
+    })
+
+
     // Build the markup for the sign-out button and set the HTML in the header
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
       <button class="text-pink-500 underline sign-out">Sign Out</button>
@@ -55,8 +70,8 @@ console.log(nftCategoryInput)
     // fetch the URL, wait for the response, store the response in memory
     let response = await fetch(url)
 
-    // refresh the page
-    location.reload()
+    // redirect to the account page
+    document.location.href = `account.html`
   })
 
   } else {

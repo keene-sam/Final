@@ -1,6 +1,9 @@
 // standard event listener for Firebase auth... use instead of DOMContentLoaded
 firebase.auth().onAuthStateChanged(async function(user) {
-   // Build the URL for our nft API
+   
+
+  
+  // Build the URL for our nft API
    let url = `/.netlify/functions/Home`
 
    // Fetch the url, wait for a response, store the response in memory
@@ -25,7 +28,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
      // Create some markup using the nft data, insert into the "nft" element
      nftDiv.insertAdjacentHTML(`beforeend`, `
-     <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
+     <div class="md:mt-16 mt-8 border-2 flex-wrap items-center justify-center rounded border-black-300 bg-blue-100">
      <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
 
        <div class="md:flex md:mx-4 mx-2 my-2">
@@ -51,6 +54,21 @@ firebase.auth().onAuthStateChanged(async function(user) {
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
       <button class="text-pink-500 underline sign-out">Sign Out</button>
     `
+
+    // Build the markup for the username and set the HTML in the header
+    document.querySelector(`.user-name`).innerHTML = `
+    <button class="text-black font-bold">👾 ${user.displayName}</button>
+    `
+    // get a reference to the account button
+    let accountButton = document.querySelector(`.user-name`)
+
+    // handle the sign out button click
+    accountButton.addEventListener(`click`, function(event) {
+      
+      // redirect to the account page
+      document.location.href = `account.html`
+    })
+
 
     // get a reference to the sign out button
     let signOutButton = document.querySelector(`.sign-out`)
