@@ -16,7 +16,7 @@ exports.handler = async function(event) {
   // establish a connection to firebase in memory
   let db = firebase.firestore()
   
-  
+  // get current nft to add for sale and price
   let currentNftQuery = await db.collection(`nftCollection`).doc(nftId)
   let nft = await currentNftQuery.get()
  

@@ -1,4 +1,3 @@
-
 // allows us to use firebase
 let firebase = require(`./firebase`)
 
@@ -26,6 +25,7 @@ exports.handler = async function(event) {
 
     // get the data from the document
     let nftData = nfts[nftIndex].data()
+    
 
     // create an Object to be added to the return value of our lambda
     let nftObject = {
@@ -51,8 +51,6 @@ exports.handler = async function(event) {
     }
 
  
-
-
   // return value of our lambda
   return {
     statusCode: 200,

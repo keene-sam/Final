@@ -1,69 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account!</title>
+    <title>You Items!</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-    <div class="bg-gray-600">
+<div class="flex flex-row">
+    <div class="text-left p-4 user-name"></div>
+    <div class="ml-auto text-sm text-right p-4 sign-in-or-sign-out"></div>
+</div> 
 
-    <div class= " md:font-extrabold font-bold text-black-600 md:text-4xl text-2xl text-center"> My Account </div>
-    <div class=" text-right sign-in-or-sign-out"></div>
+<body class="bg-blue-50">
+            <div class=" md:font-extrabold font-bold ml-4 my-4 text-green-600 md:text-4xl text-2xl text-center m-16"> My Account </div>
+        
+            <div class = "md: flex flex-wrap items-center justify-center border-b-4 border-t-4 py-2 px-4">
+             
+              <!-- Reference to our home page -->
+              <a href="marketplace.html" class="w-64 block p-2 ml-4 my-4 text-center items-center mt-4 text-white bg-green-500 rounded text-2xl"> Marketplace</a>
+        
+              <!-- Reference to the marketplace page -->
+              <a href="index.html" class="w-64 block ml-4 p-2 my-4 items-center text-center mt-4 text-white bg-green-500 rounded text-2xl"> Home</a>
+        
+              <!-- Reference to creating a new post page -->
+              <a href="create.html" class="w-64 block ml-4 p-2 my-4 items-center text-center mt-4 text-black bg-yellow-500 rounded text-2xl"> Create A New NFT</a>
+                      
+            
+            </div>
 
-    <div>
-        <p align="right">
-            <!-- Reference to our home page -->
-            <a href="index.html" > 
-                <button class="w-52 block mt-4 text-black bg-green-500 rounded text-2xl my-2">
-                Home</button>
-            </a>
+    <div class="account" ></div>
 
-            <!-- Reference to the marketplace page -->
-            <a href="Marketplace.html">
-                <button  class="w-52 block mt-4 text-black bg-green-500 rounded text-2xl my-2">
-                Marketplace</button>
-            </a>
+      <!-- Put the Firebase config here -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
 
-            <!-- Reference to creating a new post page -->
-            <a href="create.html">
-                <button class="w-52 block mt-4 text-black bg-yellow-500 rounded text-2xl my-2"> Create A
-                New NFT</button>
-            </a>
-
-        </p>
-    </div>
-
-    <div class="account"></div>
-
-    <!-- Put the Firebase config here -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <!-- Firebase Auth -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyDpTEYLGJ5ENqmLRswui9heynZepmWlAeM",
-            authDomain: "finalkieiproject.firebaseapp.com",
-            projectId: "finalkieiproject",
-            storageBucket: "finalkieiproject.appspot.com",
-            messagingSenderId: "571182565488",
-            appId: "1:571182565488:web:a2808fb1bc8b4c9bc20cb5"
-        }
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+  apiKey: "AIzaSyDpTEYLGJ5ENqmLRswui9heynZepmWlAeM",
+  authDomain: "finalkieiproject.firebaseapp.com",
+  projectId: "finalkieiproject",
+  storageBucket: "finalkieiproject.appspot.com",
+  messagingSenderId: "571182565488",
+  appId: "1:571182565488:web:a2808fb1bc8b4c9bc20cb5"
+}
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
     <script src="Account.js"></script>
 
-    </div>
 </body>
-
 </html>
