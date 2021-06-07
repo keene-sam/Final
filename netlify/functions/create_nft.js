@@ -13,8 +13,7 @@ exports.handler = async function(event) {
   let category = event.queryStringParameters.nftCategory
   let description = event.queryStringParameters.nftDescription
   let urlNft = event.queryStringParameters.nftUrl
-
-console.log(`The description is ${description}`)
+  
   // establish a connection to firebase in memory
   let db = firebase.firestore()
 
@@ -34,4 +33,3 @@ console.log(`The description is ${description}`)
     statusCode: 200
   }
 }
-

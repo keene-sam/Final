@@ -66,7 +66,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
                 <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
                 <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
                 <p class="nft ml-4 font-bold text-base">NFT Id: ${nft.id} </p>
-                <p class="nft ml-4 font-bold text-base">Current Listing Price: ${nft.price} </p>
+                <p class="nft ml-4 font-bold text-base">Current Listing Price: $${nft.price} </p>
                   <form class="w-full mt-8">
                     <p class="py-2 px-4 rounded-md my-4"> Please enter a price you would like to list this for:   
                     <input type="text" id="sale-price-${nftId}" class="mr-2 my-4 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Change Listing Price"></p>
