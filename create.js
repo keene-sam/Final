@@ -70,7 +70,7 @@ console.log(nftCategoryInput)
         signInOptions: [
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
-        signInSuccessUrl: `index.html` // where to go after we're done signing up/in
+        signInSuccessUrl: `create.html` // where to go after we're done signing up/in
       }
   
       // Starts FirebaseUI Auth
