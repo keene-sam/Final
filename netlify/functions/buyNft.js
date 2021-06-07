@@ -11,18 +11,15 @@ exports.handler = async function(event) {
 
   let nftId = event.queryStringParameters.nftId
   let userId = event.queryStringParameters.userId
+  let oldOwner = event.queryStringParameters.oldOwnerId
+  let priceNft = event.queryStringParameters.price
   
   // establish a connection to firebase in memory
   let db = firebase.firestore()
   
   
   let currentNftQuery = await db.collection(`nftCollection`).doc(nftId)
-  let nft = await currentNftQuery.get()
- 
-  console.log(nft)
 
-  let oldOwner = nft.ownerId
-  let priceNft = nft.price
 
   // create a new transaction, wait for it to return
   await db.collection('transactions').add({
@@ -33,6 +30,7 @@ exports.handler = async function(event) {
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
   })
 
+  // update owner in nft
   await currentNftQuery.update({
     ownerId: userId,
     forSale: false,
