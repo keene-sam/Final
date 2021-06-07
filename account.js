@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // Build the URL for our nft API
     let url = `/.netlify/functions/nfts`
-    let urlSell = `/.netlify/functions/sell_nft`
+    
 
     // Fetch the url, wait for a response, store the response in memory
     let response = await fetch(url)
@@ -47,66 +47,96 @@ firebase.auth().onAuthStateChanged(async function(user) {
     for (let i=0; i < json.length; i++) {
       // Store each object ("post") in memory
       let nft = json[i]
+      let nftId = nft.id
 
     // Find the NFT's the belong to this user and add it to the return value
     if (nft.ownerId == user.uid) { 
 
-      // Create some markup using the post data, insert into the "nfts" element
-     
-      nftsDiv.insertAdjacentHTML(`beforeend`, `
-        <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
-        <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
+      if(nft.forSale == true ) {
+        // Create some markup using the post data, insert into the "nfts" element
+      
+        nftsDiv.insertAdjacentHTML(`beforeend`, `
+          <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
+            <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
 
-          <div class="md:flex md:mx-4 mx-2 my-2">
-            <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
-           <div>
-              <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
-              <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
-              <p class="nft ml-4 font-bold text-base">NFT Id: ${nft.id} </p>
-              <form class="w-full mt-8">
-              <p> Please enter a price you would like to list this for:   
-            <input type="number" id="sale-price" name="sale-price" placeholder="Listing Price" class="my-2 p-2 w-64 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring-purple-500 focus:border-purple-500"></p>
-              <button id="sell-button" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl">Confirm</button>
-            </form>
+            <div class="md:flex md:mx-4 mx-2 my-2">
+              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+            <div>
+                <p class="nft ml-4 font-bold text-base">CURRENTLY ON THE MARKET FOR SALE</p>
+                <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
+                <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
+                <p class="nft ml-4 font-bold text-base">NFT Id: ${nft.id} </p>
+                <p class="nft ml-4 font-bold text-base">Current Listing Price: ${nft.price} </p>
+                  <form class="w-full mt-8">
+                    <p class="py-2 px-4 rounded-md my-4"> Please enter a price you would like to list this for:   
+                    <input type="text" id="sale-price-${nftId}" class="mr-2 my-4 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Change Listing Price"></p>
+                    <button id="sell-button-${nftId}" class="bg-green-500 py-2 px-4 rounded-md ml-4 my-4 hover:bg-green-600 text-white">Confirm</button>
+                  </form>
+              </div>
+            </div>  
+
           </div>
-          </div>  
+        `)
+      }
 
-        </div>
-      `)
-    }
-        // Build the URL for our nft API
-        let url = `/.netlify/functions/sell_nft`
+      else {
+        // Create some markup using the post data, insert into the "nfts" element
+      
+        nftsDiv.insertAdjacentHTML(`beforeend`, `
+          <div class="md:mt-16 mt-8 border-2 rounded border-black-300 bg-blue-100">
+            <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
+
+            <div class="md:flex md:mx-4 mx-2 my-2">
+              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+            <div>
+                <p class="nft ml-4 font-bold text-base">CURRENTLY NOT FOR SALE</p>    
+                <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
+                <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
+                <p class="nft ml-4 font-bold text-base">NFT Id: ${nft.id} </p>
+                  <form class="w-full mt-8">
+                    <p class="py-2 px-4 rounded-md my-4"> Please enter a price you would like to list this for:   
+                    <input type="text" id="sale-price-${nftId}" class="mr-2 my-4 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Listing Price"></p>
+                    <button id="sell-button-${nftId}" class="bg-green-500 py-2 px-4 rounded-md ml-4 my-4 hover:bg-green-600 text-white">Confirm</button>
+                  </form>
+              </div>
+            </div>  
+
+          </div>
+        `)
+
+
+
+      }
+      
 
     
-        // get a reference to the "Create" button
-        let sellButton = document.querySelector(`#sell-button`)
+      // get a reference to the newly created buy NFT button
       
-        // handle the clicking of the "Create" button
-        sellButton.addEventListener(`click`, async function(event) {
-          // prevent the default behavior (submitting the form)
-          event.preventDefault()
+      let sellNftButton = document.querySelector(`#sell-button-${nftId}`)
       
-          // get a reference to the input holding the URL, name, description and category
-          let salePriceInput = document.querySelector(`#sale-price`)
-          let nftIdentifier = document.querySelector(`.nft`)
-          let forSale = true
       
-          // store the user-inputted data in memory
-          let salePrice = salePriceInput.value
-          
-      
-          // create the URL for our  lambda function
-          let url = `/.netlify/functions/sell_nft?nftId=${nftIdentifier}&forSale=${forSale}&salePrice=${salePrice}`
-      
-          console.log(url)
-          // fetch the URL, wait for the response, store the response in memory
-          let response = await fetch(url)
-      
-          
-          // refresh the page
-          location.reload()
-        })
+
+      // event listener for the buy button
+      sellNftButton.addEventListener(`click`, async function(event) {
+       
+        let nftSalePrice = document.querySelector(`#sale-price-${nftId}`)
+        let salePrice = nftSalePrice.value
+
+        // Build the URL for our buy API
+        let url = `/.netlify/functions/sell_nft?nftId=${nftId}&userId=${user.uid}&salePrice=${salePrice}`
+        console.log(url)
+
+        // Fetch the url, wait for a response, store the response in memory
+        let response = await fetch(url)
+
+        console.log(response)
+        /*/ refresh the page
+        location.reload()*/
+        
+      })
+
     }
+  }
 
   } else {
     // user is not logged-in, so show login

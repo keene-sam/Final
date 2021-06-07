@@ -1,52 +1,32 @@
-// Goal: Provide a function to create a new nft in Firebase
+// Goal: Provide a function to buy a new NFT
 
 // allows us to use firebase
 let firebase = require(`./firebase`)
 
-// /.netlify/functions/create_post?userName=Brian&imageUrl=https://images.unsplash.com/...
+// /.netlify/functions/buynft?nftId=xxxxxxxxx&userId=xxxxxxxx
 exports.handler = async function(event) {
 
-  // get the two querystring parameters and store in memory
-  let nftIdentifier = event.queryStringParameters.nftIdentifier
-  let price = event.queryStringParameters.salePrice
-  let forSale = event.queryStringParameters.forSale
-  
+  // variables
   
 
-  console.log(price)
-  console.log(forSale)
-  console.log(nftIdentifier)
-
+  let nftId = event.queryStringParameters.nftId
+  let salePrice = event.queryStringParameters.salePrice
+  
+  
   // establish a connection to firebase in memory
   let db = firebase.firestore()
-
   
-  let nftQuery = await db.collection(`nftCollection`).get()
-
-  // retrieve the documents from the query
-  let nfts = nftQuery.docs
-
-  for (let nftIndex=0; nftIndex < nftIndex.length; nftIndex++) {
-    // get the id from the document
-    let nftId = nfts[nftIndex].id
-
-    // get the data from the document
-    let nftData = nfts[nftIndex].data()
-
-    if(nftId == nftIdentifier){
-
-        await db.collection('nftCollection').update({
-      
-            forSale: forSale,
-            price: price
-          })
-         }
-        }
-        
-    
-
-  // create a new nft, wait for it to return
   
+  let currentNftQuery = await db.collection(`nftCollection`).doc(nftId)
+  let nft = await currentNftQuery.get()
+ 
+  console.log(nft)
+
+  await currentNftQuery.update({
+    forSale: true,
+    price: salePrice
+  })
+
 
   return {
     statusCode: 200

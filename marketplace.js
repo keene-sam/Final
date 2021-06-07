@@ -68,21 +68,28 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
   
       // get a reference to the newly created buy NFT button
+      
       let buyNftButton = document.querySelector(`#buy-button-${nftId}`)
 
       // event listener for the buy button
       buyNftButton.addEventListener(`click`, async function(event) {
         // ignore the default behavior
-        event.preventDefault()
+        
+         
 
         // Build the URL for our buy API
         let url = `/.netlify/functions/buyNft?nftId=${nftId}&userId=${user.uid}`
 
+        // Fetch the url, wait for a response, store the response in memory
+        let response = await fetch(url)
+
+        console.log(response)
         // refresh the page
         location.reload()
+        
       })
+    
     }
-
     } 
     else {
       // user is not logged-in, so show login
@@ -94,7 +101,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         signInOptions: [
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
-        signInSuccessUrl: `index.html` // where to go after we're done signing up/in
+        signInSuccessUrl: `marketplace.html` // where to go after we're done signing up/in
       }
   
       // Starts FirebaseUI Auth
