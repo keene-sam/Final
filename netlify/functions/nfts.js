@@ -1,3 +1,4 @@
+
 // allows us to use firebase
 let firebase = require(`./firebase`)
 
@@ -25,7 +26,6 @@ exports.handler = async function(event) {
 
     // get the data from the document
     let nftData = nfts[nftIndex].data()
-    
 
     // create an Object to be added to the return value of our lambda
     let nftObject = {
@@ -60,28 +60,3 @@ exports.handler = async function(event) {
   }
 
 }
-
-
-    // // get the comments for this post, wait for it to return, store in memory
-    // let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).get()
-
-    // // get the documents from the query
-    // let comments = commentsQuery.docs
-
-    // // loop through the comment documents
-    // for (let commentIndex=0; commentIndex < comments.length; commentIndex++) {
-    //   // get the id from the comment document
-    //   let commentId = comments[commentIndex].id
-
-    //   // get the data from the comment document
-    //   let commentData = comments[commentIndex].data()
-
-    //   // create an Object to be added to the comments Array of the post
-    //   let commentObject = {
-    //     id: commentId,
-    //     userName: commentData.userName,
-    //     body: commentData.body
-    //   }
-
-    //   // add the Object to the post
-    //   postObject.comments.push(commentObject)
