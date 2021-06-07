@@ -1,4 +1,4 @@
-// Goal: Provide a function to create a new post in Firebase
+// Goal: Provide a function to create a new nft in Firebase
 
 // allows us to use firebase
 let firebase = require(`./firebase`)
@@ -13,12 +13,11 @@ exports.handler = async function(event) {
   let category = event.queryStringParameters.nftCategory
   let description = event.queryStringParameters.nftDescription
   let urlNft = event.queryStringParameters.nftUrl
-
-console.log(`The description is ${description}`)
+  
   // establish a connection to firebase in memory
   let db = firebase.firestore()
 
-  // create a new post, wait for it to return
+  // create a new nft, wait for it to return
   await db.collection('nftCollection').add({
     name: name,
     ownerId: ownerId,
@@ -34,4 +33,3 @@ console.log(`The description is ${description}`)
     statusCode: 200
   }
 }
-

@@ -5,14 +5,22 @@ let firebase = require(`./firebase`)
 exports.handler = async function(event) {
   // define an empty Array to hold the return value from our lambda
   let returnValue = []
-
+  
   // establish a connection to firebase in memory
   let db = firebase.firestore()
 
+  let userId = event.queryStringParameters.userId
   // perform a query against firestore for all nfts, wait for it to return, store in memory
 
-  let nftQuery = await db.collection(`nftCollection`).where(`forSale`,`==`,true).get()
+  let nftQuery =  await db.collection(`nftCollection`)
+                          .where(`forSale`,`==`,true)
+                          .get()
 
+
+/*let nftQuery =  await db.collection(`nftCollection`)
+                          .where(`forSale`,`==`,true)
+                          .where(`ownerId`,`!=`,userId)
+                          .get()*/
   // retrieve the documents from the query
   let nfts = nftQuery.docs
 

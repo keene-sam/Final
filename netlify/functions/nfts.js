@@ -25,6 +25,7 @@ exports.handler = async function(event) {
 
     // get the data from the document
     let nftData = nfts[nftIndex].data()
+    
 
     // create an Object to be added to the return value of our lambda
     let nftObject = {

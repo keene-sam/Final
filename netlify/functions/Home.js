@@ -15,7 +15,7 @@ exports.handler = async function(event) {
 
   // retrieve the documents from the query
   let nfts = nftQuery.docs
-
+  
   nfts.sort()
 
   //define minimum of releases to show

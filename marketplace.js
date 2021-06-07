@@ -5,7 +5,20 @@ firebase.auth().onAuthStateChanged(async function(user) {
     if (user) {
       // write the user Object to the JavaScript console
       console.log(user)
-  
+
+      // Build the markup for the username and set the HTML in the header
+      document.querySelector(`.user-name`).innerHTML = `
+      <button class="text-black font-bold">👾 ${user.displayName}</button>
+      `
+      // get a reference to the account button
+      let accountButton = document.querySelector(`.user-name`)
+
+      // handle the sign out button click
+      accountButton.addEventListener(`click`, function(event) {
+        
+        // redirect to the home page
+        document.location.href = `account.html`
+      })
       // Build the markup for the sign-out button and set the HTML in the header
       document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
         <button class="text-pink-500 underline sign-out">Sign Out</button>
@@ -24,7 +37,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       })
   
       // Build the URL for our nft API
-      let url = `/.netlify/functions/marketplaceLambda`
+      let url = `/.netlify/functions/marketplaceLambda?userId=${user.uid}`
   
       // Fetch the url, wait for a response, store the response in memory
       let response = await fetch(url)
@@ -52,20 +65,46 @@ firebase.auth().onAuthStateChanged(async function(user) {
         <p class="ml-4 mt-4 capitalize font-bold text-xl">${nft.name}</p>
 
           <div class="md:flex md:mx-4 mx-2 my-2">
-            <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
-           <div>
-              <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
-              <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
-              <p class="ml-4 font-bold text-base">Price: $${nft.price}</p>
+              <img src="${nft.urlNft}" class="w-1/3 border-2 border-blue-400 rounded">
+              <div>
+                <p class="ml-4 font-bold text-base">Item Description: ${nft.description}</p>
+                <p class="ml-4 font-bold text-base">Category: ${nft.category} </p>
+                <p class="ml-4 font-bold text-base">Price: $${nft.price}</p>
+                <button id="buy-button-${nftId}" class="py-2 px-4 rounded-md ml-4 my-4 shadow-sm font-medium text-white bg-blue-700 focus:outline-none">Buy NFT</button>
+              </div>
 
-          </div>
+
           </div>  
 
         </div>
       `)
-      }
+      
   
-    } else {
+      // get a reference to the newly created buy NFT button
+      
+      let buyNftButton = document.querySelector(`#buy-button-${nftId}`)
+
+      // event listener for the buy button
+      buyNftButton.addEventListener(`click`, async function(event) {
+        // ignore the default behavior
+        
+         
+
+        // Build the URL for our buy API
+        let url = `/.netlify/functions/buyNft?nftId=${nftId}&userId=${user.uid}`
+
+        // Fetch the url, wait for a response, store the response in memory
+        let response = await fetch(url)
+
+        console.log(response)
+        // refresh the page
+        location.reload()
+        
+      })
+    
+    }
+    } 
+    else {
       // user is not logged-in, so show login
       // Initializes FirebaseUI Auth
       let ui = new firebaseui.auth.AuthUI(firebase.auth())
@@ -75,7 +114,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         signInOptions: [
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
-        signInSuccessUrl: `index.html` // where to go after we're done signing up/in
+        signInSuccessUrl: `marketplace.html` // where to go after we're done signing up/in
       }
   
       // Starts FirebaseUI Auth

@@ -4,17 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final</title>
+  <title>NFTea</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
 </head>
 
+<div class="flex flex-row">
+  <div class="text-left p-4 user-name"></div>
+  <div class="ml-auto text-sm text-right p-4 sign-in-or-sign-out"></div>
+</div>  
+
 <div>
-<body class="bg-blue-50">
-  <div class="flex items-center">
-    <div class="md:mx-0 mx-4"><span class="font-bold text-4xl">Welcome to ??</span></div>
-    <div class="ml-auto text-sm sign-in-or-sign-out"></div>
+<body class="class= bg-blue-50">
+  
+  <div>
+    
+    
+    <h1 class="p-8 md:text-6xl text-center font-bold text-green-500">
+      <span>Welcome to NFTea</span>
+    </h1>
+    
   </div>
+  
+  <div class = "md: flex flex-wrap items-center justify-center border-b-4 border-t-4 py-2 px-4">
+     
+        <!-- Reference to our home page -->
+        <a href="marketplace.html" class="w-64 block p-2 ml-4 my-4 text-center items-center mt-4 text-white bg-green-500 rounded text-2xl"> Marketplace</a>
+  
+        <!-- Reference to the marketplace page -->
+        <a href="account.html" class="w-64 block p-2 ml-4 my-4 items-center text-center mt-4 text-white bg-green-500 rounded text-2xl"> My Account</a>
+  
+        <!-- Reference to creating a new post page -->
+        <a href="create.html" class="w-64 block p-2 ml-4 my-4 items-center text-center mt-4 text-black bg-yellow-500 rounded text-2xl"> Create A New NFT</a>
+                
+      
+  </div>
+
 
   <div class = "md: flex items-center text-2xl bg-white p-8">
     <div class="pr-24">
@@ -25,52 +50,48 @@
     </div>
   </div>
 
-  <div class = "md: flex items-center border-b-4 border-t-4 border-black">
+  <div class = "md: flex flex-wrap items-center justify-center">
     <h2 class="font-bold p-8">
       How to start building your digital art collection
     </h2>
+  </div>
+  <div class = "md: flex items-center border-b-4 border-t-4 border-black">
     <div>
-    <h3 class="font-bold text-center p-4">Discover</h3>
-      <p class="text-center">Artists issue authenticated
-      single edition digital artworks.
-      These are certified on the
-      blockchain to prevent forgery
-      and provide historical records
-      </p>
+      <h3 class="font-bold flex-wrap items-center justify-center text-center p-4">Discover</h3>
+        <p class="text-center flex-wrap items-center justify-center p-4">
+        Artists issue authenticated
+        single edition digital artworks.
+        These are certified on the
+        blockchain to prevent forgery
+        and provide historical records
+        </p>
     </div>
     <div>
-    <h3 class="font-bold text-center p-4">Trade</h3>
-      <p class="text-center">
-        Pieces are always on the
-        move. Purchase at asking
-        price or make a bid, and resell
-        on the online marketplace
-      </p>
+      <h3 class="font-bold flex-wrap items-center justify-center text-center p-4">Trade</h3>
+        <p class="text-center flex-wrap items-center justify-center p-4">
+          Pieces are always on the
+          move. Purchase at asking
+          price or make a bid, and resell
+          on the online marketplace
+        </p>
     </div>
     <div>
-    <h3 class="font-bold text-center p-4">Display</h3>
-      <p class="text-center">
-        As your collection grows
-        people want to see it - store
-        your NFTs and create a virtual
-        site to show off your art!
-      </p>
+      <h3 class="font-bold flex-wrap items-center justify-center text-center p-4">Display</h3>
+        <p class="text-center flex-wrap items-center justify-center p-4">
+          As your collection grows
+          people want to see it - store
+          your NFTs and create a virtual
+          site to show off your art!
+        </p>
     </div>
   </div>
   <h3 class="font-bold text-center text-2xl pt-10">
-    Select an option to get started
+    New Releases For Sale
   </h3>
-  <div class = "md: flex items-center">
-    <div class="bg-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-xl ">
-      <a href="Marketplace.html">Buy</a>
-    </div>
-    <div class="bg-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-xl">
-      <a href="Account.html">Sell</a>
-    </div>
+  <div class="flex-wrap items-center justify-center">
+    <div class="Home"></div>
   </div>
-  <h2 class="pt-20 text-2xl font-bold">New Releases</h2>
-  
-  <div class="Home"></div>
+
 </div>
  
   <!-- Put the Firebase config here -->
@@ -84,11 +105,11 @@
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyDpTEYLGJ5ENqmLRswui9heynZepmWlAeM",
-      authDomain: "finalkieiproject.firebaseapp.com",
-      projectId: "finalkieiproject",
-      storageBucket: "finalkieiproject.appspot.com",
-      messagingSenderId: "571182565488",
-      appId: "1:571182565488:web:a2808fb1bc8b4c9bc20cb5"
+    authDomain: "finalkieiproject.firebaseapp.com",
+    projectId: "finalkieiproject",
+    storageBucket: "finalkieiproject.appspot.com",
+    messagingSenderId: "571182565488",
+    appId: "1:571182565488:web:a2808fb1bc8b4c9bc20cb5"
     } // replace
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
