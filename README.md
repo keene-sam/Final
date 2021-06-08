@@ -7,3 +7,7 @@ Begin by cloning this project and running `npm install`, then replace the Fireba
 The website created is intended to serve as a marketplace where users can create, buy, and sell nfts. It includes 3 stores of data in firebase - one for each NFT, one for users, and one to track the transactions that take place (buying and selling). Users have the ability to enter a url, name, and description and add nfts to their collection.
 
 Website url: https://peaceful-kalam-f4459f.netlify.app/
+
+To try one of the users "My Account" page or buy and sell, you can use the following login information: 
+ - username: Alaa.Aldeen@kellogg.northwestern.edu
+ - password: 123456
